@@ -1,0 +1,22 @@
+[Unit]
+Description=Finnhub to Kinesis Streaming Producer
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/producer
+ExecStart=/usr/bin/python3 /home/ec2-user/producer/producer_finnhub_kinesis.py
+Restart=always
+RestartSec=10
+
+# Environment variables (optional)
+Environment=AWS_REGION=ap-south-2
+Environment=KINESIS_STREAM_NAME=te-streaming-ds
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

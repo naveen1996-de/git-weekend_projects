@@ -1,0 +1,20 @@
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Effect":"Allow",
+      "Action":["kinesis:PutRecord","kinesis:PutRecords"],
+      "Resource":["arn:aws:kinesis:ap-south-2:<ACCOUNT_NUMBER>:stream/te-streaming-ds"]
+    },
+    {
+      "Effect":"Allow",
+      "Action":["secretsmanager:GetSecretValue"],
+      "Resource":["arn:aws:secretsmanager:ap-south-2:<ACCOUNT_NUMBER>:secret:te-creds"]
+    },
+    {
+      "Effect":"Allow",
+      "Action":["logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents"],
+      "Resource":["*"]
+    }
+  ]
+}
