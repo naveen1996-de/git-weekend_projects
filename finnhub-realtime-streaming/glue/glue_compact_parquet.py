@@ -1,4 +1,5 @@
 import sys
+import os
 from awsglue.utils import getResolvedOptions
 from awsglue.context import GlueContext
 from pyspark.context import SparkContext
