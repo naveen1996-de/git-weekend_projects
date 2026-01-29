@@ -1,0 +1,7 @@
+{
+  "RAW_BUCKET": "<BUCKET_NAME>",
+  "RAW_PREFIX": "te-streaming-raw-layer",
+  "PARQUET_S3_PATH": "s3://<BUCKET_NAME>/te-parquet-table-layer",
+  "GLUE_JOB_NAME": "te-parquet-job",
+  "AWS_REGION": "ap-south-2"
+}

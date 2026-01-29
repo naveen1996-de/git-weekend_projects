@@ -1,0 +1,26 @@
+# === EC2 SETUP ===
+sudo dnf update -y
+sudo dnf install -y python3-pip
+pip3 install boto3 websocket-client requests
+
+# === PRODUCER ===
+mkdir -p ~/producer
+cd ~/producer
+# upload producer_finnhub_kinesis.py here
+python3 producer_finnhub_kinesis.py
+
+# === SYSTEMD (optional) ===
+sudo cp producer.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable producer
+sudo systemctl start producer
+
+# === ATHENA ===
+CREATE DATABASE te_streaming_db;
+
+# === GLUE ===
+# Upload glue scripts to:
+# s3://<BUCKET_NAME>/te-parquet-table-layer/scripts/
+
+# === ATHENA PARTITIONS ===
+MSCK REPAIR TABLE te_parquet_trade;
